@@ -16,5 +16,8 @@
   },
   "dependencies": {
     "serve": "^11.3.2"
+  },
+  "prettier": {
+    "semi": false
   }
 }

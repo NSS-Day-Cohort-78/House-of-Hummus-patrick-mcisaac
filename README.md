@@ -24,11 +24,11 @@
 
 1. When the user selects an item in any of the three columns, the choice should be stored as transient state.
 1. When a user makes a choice for all three kinds of food, and then clicks the "Purchase Combo" button, a new sales object should be...
-    1. Stored as permanent state in your local API.
-    1. Represented as HTML below the **Monthly Sales** header in the following format **_exactly_**. Your output will not have zeroes, but the actual amount.
-        ```html
-        Receipt #1 = $00.00
-        ```
+   1. Stored as permanent state in your local API.
+   1. Represented as HTML below the **Monthly Sales** header in the following format **_exactly_**. Your output will not have zeroes, but the actual amount.
+      ```html
+      Receipt #1 = $00.00
+      ```
    1. The user's choices should be cleared from transient state once the purchase is made.
 
 ## Design
@@ -56,10 +56,16 @@ sequenceDiagram
 > 🧨 Before you click the "Assessment Complete" button on the Learning Platform, add your answers below for each question and make a commit. It is your option to request a face-to-face meeting with a coach for a vocabulary review.
 
 1. Should transient state be represented in a database diagram? Why, or why not?
-   > Your answer here
+
+   > I think you are asking about ERD. I dont think transient data should be in an ERD because we dont actually have a transient database. its just logic to update a part of a database
+
 2. In the **FoodTruck** module, you are **await**ing the invocataion of all of the component functions _(e.g. sales, veggie options, etc.)_. Why must you use the `await` keyword there? Explain what happens if you remove it.
-   > Your answer here
+
+   > You must await those functions, because they are async. They have to wait for the fetch promise to send a response. I made this error and I was just shown { object promise } in my HTML
+
 3. When the user is making choices by selecting radio buttons, explain how that data is retained so that the **Purchase Combo** button works correctly.
-   > Your answer here
+
+   > I put an event listener on the radio buttons. when one is selected it calls the function in TransientState.js to update the transientState object with the correct value
+
 4. You used the `map()` array method in the self assessment _(at least, you should have since it is a learning objective)_. Explain why that function is helpful as a replacement for a `for..of` loop.
-   > Your answer here
+   > I think map is helpful because it returns a new array, not a copy of the array. I think it can also be a little shorter to write.

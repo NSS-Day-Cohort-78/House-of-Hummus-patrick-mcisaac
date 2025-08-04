@@ -1,20 +1,28 @@
+---
+id: 62ebd404-4647-41ba-bc1d-8130d3c288fa
+---
 sequenceDiagram
-    Main ->> Entrees: Generate entree option
-    Entrees --> Main: Here are some radio buttons
 
-    Main->>Vegetables: Generate vegetable options
-    Vegetables-->>Main: Here are some radio buttons
+    Main ->> FoodTruck: generate HTML
+    
+    FoodTruck ->> Entrees: Generate entree option
+    Entrees --> FoodTruck: Here are some radio buttons
 
-    Main->>Sides: Generate Side options
-    Sides-->>Main: Here are some radio buttons
+    FoodTruck->>Vegetables: Generate vegetable options
+    Vegetables-->>FoodTruck: Here are some radio buttons
 
-    Main->>Purchased: Generate purchased meals HTML
-    Purchased-->>Main: Here is some HTML
+    FoodTruck->>Sides: Generate Side options
+    Sides-->>FoodTruck: Here are some radio buttons
 
-    Main->>Button: Generate a button
-    Button-->>Main: Here is a button
+    FoodTruck->>Button: Generate a button
+    Button-->>FoodTruck: Here is a button
 
-    Note over Main: Render HTML
+    FoodTruck->>Purchased: Generate purchased meals HTML
+    Purchased-->>FoodTruck: Here is some HTML
+
+    Note over FoodTruck: Render HTML
+
+    FoodTruck -->> Main: Here is some HTML
 
     Entrees ->> TransientState: option was clicked update state
 
@@ -30,4 +38,6 @@ sequenceDiagram
 
     Note over TransientState: Reset transient data
 
-    Button ->> Main: Re render page
+    Button ->> Main: Sends Event listener
+
+    Note over Main: Hears event and re renders HTML
