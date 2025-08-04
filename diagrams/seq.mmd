@@ -1,0 +1,33 @@
+sequenceDiagram
+    Main ->> Entrees: Generate entree option
+    Entrees --> Main: Here are some radio buttons
+
+    Main->>Vegetables: Generate vegetable options
+    Vegetables-->>Main: Here are some radio buttons
+
+    Main->>Sides: Generate Side options
+    Sides-->>Main: Here are some radio buttons
+
+    Main->>Purchased: Generate purchased meals HTML
+    Purchased-->>Main: Here is some HTML
+
+    Main->>Button: Generate a button
+    Button-->>Main: Here is a button
+
+    Note over Main: Render HTML
+
+    Entrees ->> TransientState: option was clicked update state
+
+    Sides ->> TransientState: option was clicked update state
+
+    Vegetables ->> TransientState: option was clicked update state
+
+    Button ->> TransientState: Button was pressed, send info to API
+
+    TransientState->>API: Save this dinner order
+
+    API-->>TransientState: Order saved
+
+    Note over TransientState: Reset transient data
+
+    Button ->> Main: Re render page

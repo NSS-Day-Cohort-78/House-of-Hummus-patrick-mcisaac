@@ -1,0 +1,24 @@
+Table entrees {
+    id int [pk]
+    name varchar
+    price int
+}
+
+Table vegetables {
+    id int [pk]
+    type varchar
+    price int
+}
+
+Table sides {
+    id int [pk]
+    title varchar
+    price int
+}
+
+Table Purchases {
+    id int [pk]
+    entreeId int [ref: <> entrees.id]
+    sideId int [ref: <> sides.id]
+    vegetableId int [ref: <> vegetables.id]
+}
